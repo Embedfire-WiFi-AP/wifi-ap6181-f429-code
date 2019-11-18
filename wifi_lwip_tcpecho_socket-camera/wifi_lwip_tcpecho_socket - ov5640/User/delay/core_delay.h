@@ -19,7 +19,7 @@
 
 #if USE_DWT_DELAY
 
-//#define Delay_ms(ms)  	CPU_TS_Tmr_Delay_MS(ms)
+#define Delay_ms(ms)  	CPU_TS_Tmr_Delay_MS(ms)
 //#define Delay_us(us)  	CPU_TS_Tmr_Delay_US(us)
 ///* 最大延时 60s=2的32次方/72000000 */
 //#define Delay_s(s)  	  CPU_TS_Tmr_Delay_S(s)

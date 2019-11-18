@@ -99,44 +99,7 @@ void OV5640_HW_Init(void)
 
 		GPIO_SetBits(DCMI_RST_GPIO_PORT,DCMI_RST_GPIO_PIN);
 
-//		/****** 配置I2C，使用I2C与摄像头的SCCB接口通讯*****/
-//		/* 使能I2C时钟 */
-//		RCC_APB1PeriphClockCmd(CAMERA_I2C_CLK, ENABLE);
-//		/* 使能I2C使用的GPIO时钟 */
-//		RCC_AHB1PeriphClockCmd(CAMERA_I2C_SCL_GPIO_CLK|CAMERA_I2C_SDA_GPIO_CLK, ENABLE);
-//		/* 配置引脚源 */
-//		GPIO_PinAFConfig(CAMERA_I2C_SCL_GPIO_PORT, CAMERA_I2C_SCL_SOURCE, CAMERA_I2C_SCL_AF);
-//		GPIO_PinAFConfig(CAMERA_I2C_SDA_GPIO_PORT, CAMERA_I2C_SDA_SOURCE, CAMERA_I2C_SDA_AF);
 
-//		/* 初始化GPIO */
-//		GPIO_InitStructure.GPIO_Pin = CAMERA_I2C_SCL_PIN ;
-//		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-//		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-//		GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
-//		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-//		GPIO_Init(CAMERA_I2C_SCL_GPIO_PORT, &GPIO_InitStructure);
-//		GPIO_PinAFConfig(CAMERA_I2C_SCL_GPIO_PORT, CAMERA_I2C_SCL_SOURCE, CAMERA_I2C_SCL_AF);
-
-//		GPIO_InitStructure.GPIO_Pin = CAMERA_I2C_SDA_PIN ;
-//		GPIO_Init(CAMERA_I2C_SDA_GPIO_PORT, &GPIO_InitStructure);
-
-//		/*初始化I2C模式 */
-//		I2C_DeInit(CAMERA_I2C); 
-
-//		I2C_InitStruct.I2C_Mode = I2C_Mode_I2C;
-//		I2C_InitStruct.I2C_DutyCycle = I2C_DutyCycle_2;
-//		I2C_InitStruct.I2C_OwnAddress1 = 0xFE;
-//		I2C_InitStruct.I2C_Ack = I2C_Ack_Enable;
-//		I2C_InitStruct.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
-//		I2C_InitStruct.I2C_ClockSpeed = 400000;
-
-//		/* 写入配置 */
-//		I2C_Init(CAMERA_I2C, &I2C_InitStruct);
-
-//		/* 使能I2C */
-//		I2C_Cmd(CAMERA_I2C, ENABLE);
-
-//		Delay(50);
 }
 
 /**

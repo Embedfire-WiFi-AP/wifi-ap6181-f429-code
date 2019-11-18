@@ -115,16 +115,16 @@ int32_t open_camera(uint32_t *BufferSRC, uint32_t BufferSize)
 	DCMI_InitStructure.DCMI_VSPolarity = DCMI_VSPolarity_Low;
 
 	DCMI_Init(&DCMI_InitStructure);
-    
-//	DMA_DCMIConfiguration(BufferSRC, BufferSize);
-    HAL_DCMI_Start_DMA((uint32_t)BufferSRC, BufferSize);
-    
+
+	//	DMA_DCMIConfiguration(BufferSRC, BufferSize);
+	HAL_DCMI_Start_DMA((uint32_t)BufferSRC, BufferSize);
+
 	DCMI_ITConfig(DCMI_IT_FRAME, ENABLE);
 
 	NVIC_InitStructure.NVIC_IRQChannel = DCMI_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 7;//DCMI_IRQn_Priority;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 7;//DCMI_IRQn_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
 	if (OV5640_SCCB_Init(JPEG_FORMAT) != kNoErr)
