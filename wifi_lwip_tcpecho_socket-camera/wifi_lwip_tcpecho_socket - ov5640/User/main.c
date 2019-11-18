@@ -48,11 +48,23 @@ void BSP_Init();
 /**
  * 主函数
  */
-
+#include "camera_data_queue.h"
 
 int main( void )
 {
 		BSP_Init();
+	
+	
+		host_thread_type_t    wwd_thread;
+		camera_data * cambuf;
+		int32_t err = kNoErr;
+		err = camera_queue_init();
+		cambuf = cbWrite(&cam_circular_buff);
+		err = open_camera((uint32_t *)cambuf->head, CAMERA_QUEUE_DATA_LEN);
+		SDRAM_Init();//初始化外部sdram
+		while(1){;}
+	
+	
 
     /*创建一个初始线程 */									
 		BaseType_t xReturn = pdPASS;

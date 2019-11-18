@@ -166,26 +166,15 @@ static const platform_uart_config_t stdio_config =
 const platform_gpio_t wifi_control_pins[] =
 {
     /* Reset pin unavailable */
-//    [WWD_PIN_POWER      ] = { GPIOB,  13 },
-//    [WWD_PIN_32K_CLK    ] = { GPIOA,  8 },
-//    [WWD_PIN_BOOTSTRAP_0] = { GPIOB,  1 },
-//    [WWD_PIN_BOOTSTRAP_1] = { GPIOC, 10 },
-	  [WWD_PIN_RESET      ] = { GPIOB,  13 },
-//    [WWD_PIN_32K_CLK    ] = { GPIOA,  8 },
-//    [WWD_PIN_BOOTSTRAP_0] = { GPIOB,  1 },
-//    [WWD_PIN_BOOTSTRAP_1] = { GPIOC, 10 },
+//	[WWD_PIN_RESET      ] = { GPIOB,  13 },
+	  [WWD_PIN_RESET      ] = { GPIOG,  9 },
+
 };
 
 /* Wi-Fi SDIO bus pins. Used by WICED/platform/STM32F2xx/WWD/wwd_SDIO.c */
 const platform_gpio_t wifi_sdio_pins[] =
 {
-//    [WWD_PIN_SDIO_OOB_IRQ] = { GPIOB, 11 },
-//    [WWD_PIN_SDIO_CLK    ] = { GPIOC, 12 },//
-//    [WWD_PIN_SDIO_CMD    ] = { GPIOD,  2 },//
-//    [WWD_PIN_SDIO_D0     ] = { GPIOC,  8 },//
-//    [WWD_PIN_SDIO_D1     ] = { GPIOC,  9 },//
-//    [WWD_PIN_SDIO_D2     ] = { GPIOC, 10 },//
-//    [WWD_PIN_SDIO_D3     ] = { GPIOC, 11 },//
+
 	  [WWD_PIN_SDIO_OOB_IRQ] = { GPIOA, 0},
     [WWD_PIN_SDIO_CLK    ] = { GPIOC, 12 },//
     [WWD_PIN_SDIO_CMD    ] = { GPIOD,  2 },//

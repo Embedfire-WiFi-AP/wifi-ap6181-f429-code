@@ -54,7 +54,7 @@
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>1</BrowseInformation>
+          <BrowseInformation>0</BrowseInformation>
           <ListingPath>..\..\Listing\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -446,11 +446,6 @@
               <FileName>core_delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\delay\core_delay.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcpecho.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\tcpecho.c</FilePath>
             </File>
           </Files>
         </Group>
