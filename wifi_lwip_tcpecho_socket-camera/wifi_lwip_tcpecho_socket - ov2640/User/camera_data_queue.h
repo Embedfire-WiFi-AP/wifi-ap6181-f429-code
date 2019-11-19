@@ -13,23 +13,11 @@
 由于网络的情况有可能不稳定
 */
 
-//600*800
-//缓冲队列的个数需要为2的幂
-//#define CAMERA_QUEUE_NUM        (4)               //缓冲队列的大小
-//#define CAMERA_QUEUE_DATA_LEN   (1024 * 1024*1)       //单帧图片的缓冲区大小
 
-////320*240
-//#define CAMERA_QUEUE_NUM        (16)               //缓冲队列的大小
-//#define CAMERA_QUEUE_DATA_LEN   (1024 * 512)       //单帧图片的缓冲区大小
+#define CAMERA_QUEUE_NUM        (2)               //缓冲队列的大小
+#define CAMERA_QUEUE_DATA_LEN   (1024 * 1024*4)       //单帧图片的缓冲区大小
 
 
-////640*480
-//#define CAMERA_QUEUE_NUM        (4)               //缓冲队列的大小
-//#define CAMERA_QUEUE_DATA_LEN   (1024 * 1024*1)       //单帧图片的缓冲区大小
-
-//1024x768		
-#define CAMERA_QUEUE_NUM        (16)               //缓冲队列的大小
-#define CAMERA_QUEUE_DATA_LEN   (1024 * 512)       //单帧图片的缓冲区大小
 
 typedef struct _camera_data
 {

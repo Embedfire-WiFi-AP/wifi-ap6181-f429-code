@@ -194,20 +194,6 @@ void tcp_server_thread( void *arg )
 										 sizeof(int));    /* length of option value */
 				}
 
-//      while(1)
-//			{
-//				/*测试发送性能*/
-//					memset(queue_buff,send_data++,1024*50);
-//					if(send_data>9) {send_data=0;}
-//					
-//					write(client_fd,queue_buff,1024*50);
-//					vTaskDelay(50);//每秒20*50kB
-//					printf("count -> [%d]\r\n",num++);
-//			}				
-			
-			//1s 20 * 50kB =1000KB
-			//1min 60*1000KB=60 000
-			//1hour=60min 60*60*1000KB
 
         if( IsValidSocket( client_fd ) )
         {			
@@ -223,10 +209,7 @@ void tcp_server_thread( void *arg )
                 {
 										//更新读指针		
 										cbReadFinish(&cam_circular_buff);                  		
-										//mico_thread_msleep(2);
-									//	host_rtos_delay_milliseconds(2);
-									
-										vTaskDelay(100);
+
 										continue;
                 }
 
@@ -280,9 +263,4 @@ void tcp_server_thread( void *arg )
     jpeg_socket_close( &sock );	
 		
 }
-
-
-
-
-
 
