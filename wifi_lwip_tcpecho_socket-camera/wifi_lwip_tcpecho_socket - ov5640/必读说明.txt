@@ -1,82 +1,99 @@
-/*********************************************************************************************/
-本文档使用 TAB = 4 对齐，使用keil5默认配置打开阅读比较方便。
+wifi_ov5640例程说明：
 
-【*】程序简介
+简介：
+  本例程演示开发板采集摄像头数据并通过WiFi传输到电脑上位机。
 
--工程名称：SDIO—SD卡
--实验平台: 秉火STM32 F429 开发板 
--MDK版本：5.16
--ST固件库版本：1.5.1
+网络连接模型如下：
+ 电脑<--有线或无线-->路由<--无线-->开发板
 
-【 ！】功能简介：
-使用SDIO接口对SD卡进行基本读写(不含文件系统)
+ 实验中使用TCP协议传输数据，电脑作为TCP Client，开发板作为TCP Server。
 
-学习目的：学习STM32的SDIO驱动SD卡。
+ 该联接模式是不经过外网(互联网)的，我们通过电脑端的上位机输出接收到的视频数据。
 
-【 ！！】注意事项：
+ 说明：因为图片数据量巨大，目前尚未有免费的云端支持视频式的图片传输，且上传视频到云端对网络带宽流量要求高，外网扩展的方式很多，如有需要请自行查询相关知识，建议使用外网时降低图像采集的帧率和分辨率。（还需要改程序，把开发板改为TCP Client）
 
-本程序会对SD卡进行 非文件系统 方式读写，会删除SD卡的文件系统	
-实验后可通过电脑格式化或使用 带文件系统的SD卡例程 恢复SD卡文件系统		
-但sd卡内的原文件不可恢复，实验前务必备份SD卡内的原文件！！！	
+操作步骤：
+1.遵守上一目录的“WiFi例程说明.txt”文档的前5条使用配置，务必先阅读该文件并配置。
 
+2.本程序仅支持配套的“秉火OV5640摄像头”，实验前必须给开发板接入该摄像头。
 
-【 ！】实验操作：
-在开始进行SD卡基本测试前，请给开发板插入32G以内的SD卡。		
+3.本例程 与老版本不同 只需要正常下载程序即可（下载前要先配网）
 
-电脑端使用串口调试助手，选择电脑与STM32相连的COM口，设置为115200-N-8-1，
-复位开发板，即可接收STM32串口发送给电脑的调试信息。	
+  --demo程序目录：
+	例程\Projects\RVMDK（uv5）\
+  使用MDK打开该目录下后缀为“.uvprojx”的文件即可。
 
-若已确认，请按开发板的KEY1按键，开始SD卡测试实验。
+3.配网：
+  本程序不支持easy_link的配网功能，需要手动修改工程文件，
 
-/***************************************************************************************************************/
+  打开demo程序后，在MDK左侧的工程栏找到“USER\wifi_base_config.h”文件
 
-【*】 引脚分配
+  文件头部有AP_SSID及AP_PASS常量，把它们的字符串内容改成路由名及密码即可：
 
-SDIO(microSD卡座，支持32G以内的SD卡)：
-microtSD卡座的SDIO接口与STM32的SDIO相连。
-		SDIO_D0	<--->PC8
-		SDIO_D1	<--->PC9
-		SDIO_D2	<--->PC10
-		SDIO_D3	<--->PC11
-		SDIO_CK	<--->PC12
-		SDIO_CMD<--->PD2
-
-串口(TTL-USB TO USART)：
-CH340的收发引脚与STM32的发收引脚相连。
-	RX<--->PA9
-	TX<--->PA10
-												
-/*****************************************************************************************************/
+		#define AP_SSID              "fire_AP6181"    /* 路由名称 */
+		#define AP_PASS              "123456789"      /* 路由密码 */
 
 
-【*】 时钟
+  注：电脑与开发板要连接在同一个路由，即在局域网内。
 
-A.晶振：
--外部高速晶振：25MHz
--RTC晶振：32.768KHz
 
-B.各总线运行时钟：
--系统时钟 = SYCCLK = AHB1 = 180MHz
--APB2 = 90MHz 
--APB1 = 45MHz
+3.检查开发板运行情况：
+  复位开发板后，检查串口调试助手的输出
 
-C.浮点运算单元：
-  不使用
+正常会输出类似如下的字符串：
+------------------------------------------------------------------------------------
+  程序正常运行的输出
+------------------------------------------------------------------------------------
 
-/*********************************************************************************************/
+Started FreeRTOSUnknown
+Starting 
+LwIP Unknown
+Starting 
+Wiced v006.002.001
 
-【*】 版本
+Joining : fire_AP6181
 
--程序版本：1.0
--发布日期：2015-10
+Successfully joined : fire_AP6181
 
--版本更新说明：首次发布
+Obtaining IP address via DHCP
 
-/*********************************************************************************************/
+Network ready IP: 192.168.100.46
 
-【*】 联系我们
+[4573][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0000000,cam_circular_buff.elems[i] =0xd0000000
+[4598][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0080000,cam_circular_buff.elems[i] =0xd0080000
+[4623][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0100000,cam_circular_buff.elems[i] =0xd0100000
+[4648][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0180000,cam_circular_buff.elems[i] =0xd0180000
+[4673][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0200000,cam_circular_buff.elems[i] =0xd0200000
+[4698][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0280000,cam_circular_buff.elems[i] =0xd0280000
+[4723][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0300000,cam_circular_buff.elems[i] =0xd0300000
+[4748][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0380000,cam_circular_buff.elems[i] =0xd0380000
+[4773][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0400000,cam_circular_buff.elems[i] =0xd0400000
+[4798][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0480000,cam_circular_buff.elems[i] =0xd0480000
+[4823][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0500000,cam_circular_buff.elems[i] =0xd0500000
+[4848][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0580000,cam_circular_buff.elems[i] =0xd0580000
+[4873][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0600000,cam_circular_buff.elems[i] =0xd0600000
+[4897][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0680000,cam_circular_buff.elems[i] =0xd0680000
+[4922][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0700000,cam_circular_buff.elems[i] =0xd0700000
+[4947][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0780000,cam_circular_buff.elems[i] =0xd0780000
+本地端口号是5001
 
--秉火论坛    :http://www.firebbs.cn
--淘宝店铺    :http://firestm32.taobao.com
 
-/*********************************************************************************************/
+
+--------------------------------------------------------------------------------------
+打印完毕后，开发板的LED会频闪
+  注1：
+--其中“Network ready IP: 192.168.100.46”中的信息为开发板的IP，
+	"本地端口号是5001
+
+"为端口号；不同环境下该参数不一样，后面使用上位机连接时，务必根据该实际信息进行配置
+
+  注2：
+--其中“[4573][camera_data_queue: camera_data_queue.c: 183] cam_data[i].head=0xd0000000,cam_circular_buff.elems[i] =0xd0000000”
+	代表缓存地址，多少行就代表多少个队列缓存，
+
+4.连接上位机：
+  	打开配套的摄像头调试助手，在网络调试功能页面中选择“TCP Client”协议，
+
+	并输入上面通过串口调试助手获的开发板IP及端口，
+
+	然后点击“连接”按钮，上位机即可接收并输出摄像头图像。
