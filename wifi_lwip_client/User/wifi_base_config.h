@@ -39,8 +39,8 @@
  *                    配置
  ******************************************************/
 //#define AP_SSID              "embedfire_AP6181"    /* 路由名称 */
-#define AP_SSID              "embedfire_dev"    /* 路由名称 */
-#define AP_PASS              "wildfire"         /* 路由密码 */
+#define AP_SSID              "fire_AP6181"    /* 路由名称 */
+#define AP_PASS              "123456789"         /* 路由密码 */
 #define AP_SEC               WICED_SECURITY_WPA2_MIXED_PSK  /* 路由加密 */
 
 #define COUNTRY              WICED_COUNTRY_AUSTRALIA    /* 选择城市 据说澳大利亚的信号更强一些，这里选择为澳大利亚 */
@@ -54,7 +54,7 @@
 #define DEST_IP_ADDR0               192
 #define DEST_IP_ADDR1               168
 #define DEST_IP_ADDR2               100
-#define DEST_IP_ADDR3               48
+#define DEST_IP_ADDR3               2
 
 #define DEST_PORT                  5001
 

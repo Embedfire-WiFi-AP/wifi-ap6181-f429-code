@@ -1,23 +1,6 @@
-/*************************************************************************
-* FUNCTION
-*   OV5640_FOCUS_AD5820_Init
-*
-* DESCRIPTION
-*   This function is to load micro code for AF function
-*
-* PARAMETERS
-*   None
-*
-* RETURNS
-*   None
-*
-* GLOBALS AFFECTED
-*
-*************************************************************************/
-#include "ov5640_AF.h"
-#include "Debug.h"
-#define  uint8_t 	unsigned char
 
+#include "./camera/ov5640_AF.h"
+#include "./delay/core_delay.h"  
 #define ov5640_AF_log(M, ...) //custom_log("ov5640_AF", M, ##__VA_ARGS__)
 
 static void OV5640_FOCUS_AD5820_Check_MCU(void);
@@ -272,6 +255,35 @@ static uint8_t OV5640_AF_FW[] =
     0x83, 0x22, 0x8f, 0x82, 0x8e, 0x83, 0x75, 0xf0, 0x04, 0xed, 0x02, 0x07, 0x5b,  
 };
 
+static void OV5640_FOCUS_AD5820_Check_MCU(void)
+{
+    int i = 0;    
+    uint8_t check[13] = {0x00};
+	//mcu on
+    check[0] = OV5640_ReadReg(0x3000);
+    check[1] = OV5640_ReadReg(0x3004);
+	//soft reset of mcu
+    check[2] = OV5640_ReadReg(0x3f00);	
+	//afc on
+    check[3] = OV5640_ReadReg(0x3001);
+    check[4] = OV5640_ReadReg(0x3005);
+	//gpio1,gpio2
+    check[5] = OV5640_ReadReg(0x3018);
+    check[6] = OV5640_ReadReg(0x301e);
+    check[7] = OV5640_ReadReg(0x301b);
+    check[8] = OV5640_ReadReg(0x3042);
+	//y0
+    check[9] = OV5640_ReadReg(0x3018);
+    check[10] = OV5640_ReadReg(0x301e);
+    check[11] = OV5640_ReadReg(0x301b);
+    check[12] = OV5640_ReadReg(0x3042);
+
+
+    for(i = 0; i < 13; i++)
+    ov5640_AF_log("check[%d]=0x%x\n", i, check[i]);
+	
+}
+extern uint8_t OV5640_WriteFW(uint8_t *pBuffer ,uint16_t BufferSize);
 static void OV5640_FOCUS_AD5820_Init(void)
 {
     uint8_t  state=0x8F;
@@ -326,22 +338,6 @@ void OV5640_FOCUS_AD5820_Constant_Focus(void)
     uint8_t state = 0x8F;
     uint32_t iteration = 300;
 
-//    //send idle command to firmware
-//    OV5640_WriteReg(0x3023,0x01);
-//    OV5640_WriteReg(0x3022,0x08);
-
-//    iteration = 300;
-//    do {
-//    	 state = (uint8_t)OV5640_ReadReg(0x3023);
-//        if (iteration-- == 0)
-//        {
-////            RETAILMSG(1, (TEXT("[OV5640]AD5820_Single_Focus time out !!0x%x \r\n")), state);
-//            ov5640_AF_log("[OV5640]AD5820_Single_Focus time out !! %x\n",state);
-//            return ;
-//        }   
-//        Delay(10);
-//    } while(state!=0x00); 
-
     //send constant focus mode command to firmware
     OV5640_WriteReg(0x3023,0x01);
     OV5640_WriteReg(0x3022,0x04);
@@ -359,136 +355,9 @@ void OV5640_FOCUS_AD5820_Constant_Focus(void)
     } while(state!=0x00);//0x0 : focused 0x01: is focusing
     return;
 }
-//static void OV5640_FOCUS_AD5820_Single_Focus()
-//{
-//     
-
-//    uint8_t state = 0x8F;
-//    uint8_t state_ack = 0x8F;	
-//    uint8_t state_cmd = 0x8F;		
-//    uint32_t iteration = 300;
-//    ov5640_AF_log("OV5640_FOCUS_AD5820_Single_Focus\n");
-////1.update zone
-//    //OV5640_FOCUS_AD5820_Update_Zone();
-
-////2.change focus window
-//    //OV5640_FOCUS_AD5820_Set_AF_Window_to_IC();
-
-////3.update zone
-//    //OV5640_FOCUS_AD5820_Update_Zone();
-
-////4.send single focus mode command to firmware
-//    OV5640_WriteReg(0x3023,0x01);
-//    OV5640_WriteReg(0x3022,0x03);
-
-//    ov5640_AF_log("after single focus  \n");
-
-////5.after sigle focus cmd, check the STA_FOCUS until S_FOCUSED 0x10
-//    iteration = 1000;  
-//    do{
-//        state = (uint8_t)OV5640_ReadReg(0x3023);
-//        ov5640_AF_log("test,Single state = 0x%x,state_ack=0x%x,state_cmd=0x%x\n",state,state_ack,state_cmd);
-//        
-//        if(state == 0x00)
-//        {
-////            state = (uint8_t)OV5640_ReadReg(0x3029);
-////            if(state == 0x10)
-// //           {   
-//                ov5640_AF_log("single focused!\n");
-//                break;
-// //           }
-//        }			
-//        mico_thread_msleep(10);
-//        iteration --;
-
-//    }while(iteration);
-//    return;
-
-//}
-
-//static void OV5640_FOCUS_AD5820_Pause_Focus()
-//{
-//    uint8_t state = 0x8F;
-//    uint32_t iteration = 300;
-
-//    //send idle command to firmware
-//    OV5640_WriteReg(0x3023,0x01);
-//    OV5640_WriteReg(0x3022,0x06);
-
-//    iteration = 100;  
-//    do{
-//        state = (uint8_t)OV5640_ReadReg(0x3023);
-//        
-//        if(state == 0x00)
-//        {
-//            ov5640_AF_log("idle!\n");
-//            break;
-//        }			
-//        Delay(10);
-//        iteration --;
-
-//    }while(iteration);
-
-//}
-
-//static void OV5640_FOCUS_AD5820_Cancel_Focus()
-//{
-//    uint8_t state = 0x8F;
-//    uint32_t iteration = 300;
-//    ov5640_AF_log("OV5640_FOCUS_AD5820_Cancel_Focus\n");
-//    //send idle command to firmware
-//    OV5640_WriteReg(0x3023,0x01);
-//    OV5640_WriteReg(0x3022,0x08);
-//	
-//    iteration = 100;  
-//    do{
-//        state = (uint8_t)OV5640_ReadReg(0x3023);
-
-//        if(state == 0x00)
-//    {
-//            ov5640_AF_log("idle!\n");
-//            break;
-//    }
-//        Delay(10);
-//        iteration --;
-//		
-//    }while(iteration);
-//			
-//}
-
-static void OV5640_FOCUS_AD5820_Check_MCU(void)
-{
-    int i = 0;    
-    uint8_t check[13] = {0x00};
-	//mcu on
-    check[0] = OV5640_ReadReg(0x3000);
-    check[1] = OV5640_ReadReg(0x3004);
-	//soft reset of mcu
-    check[2] = OV5640_ReadReg(0x3f00);	
-	//afc on
-    check[3] = OV5640_ReadReg(0x3001);
-    check[4] = OV5640_ReadReg(0x3005);
-	//gpio1,gpio2
-    check[5] = OV5640_ReadReg(0x3018);
-    check[6] = OV5640_ReadReg(0x301e);
-    check[7] = OV5640_ReadReg(0x301b);
-    check[8] = OV5640_ReadReg(0x3042);
-	//y0
-    check[9] = OV5640_ReadReg(0x3018);
-    check[10] = OV5640_ReadReg(0x301e);
-    check[11] = OV5640_ReadReg(0x301b);
-    check[12] = OV5640_ReadReg(0x3042);
-
-
-    for(i = 0; i < 13; i++)
-    ov5640_AF_log("check[%d]=0x%x\n", i, check[i]);
-	
-}
-
 void OV5640_AUTO_FOCUS(void)
 {
    OV5640_FOCUS_AD5820_Init();
    OV5640_FOCUS_AD5820_Constant_Focus();
 }
-
 

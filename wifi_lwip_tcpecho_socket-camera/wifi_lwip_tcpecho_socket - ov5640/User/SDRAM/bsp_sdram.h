@@ -2,8 +2,8 @@
 #define	__SDRAM_H
 #include "stm32f4xx.h"
 
-//#define IS42S16400J_SIZE        0x800000  //400000*16bits = 0x800000  ，8M字节
-#define IS42S16400J_SIZE (32*1024*1024)  //32M字节，W9825G6
+#define IS42S16400J_SIZE        0x800000  //400000*16bits = 0x800000  ，8M字节
+//#define IS42S16400J_SIZE (32*1024*1024)  //32M字节，W9825G6
 
 //设置变量定义到“EXRAM”节区的宏
 #define __EXRAM  __attribute__ ((section ("EXRAM")))

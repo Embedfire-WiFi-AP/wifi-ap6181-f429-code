@@ -45,7 +45,7 @@ void CPU_TS_TmrInit(void);
 void CPU_TS_Tmr_Delay_US(uint32_t us);
 #define CPU_TS_Tmr_Delay_MS(ms)     CPU_TS_Tmr_Delay_US(ms*1000)
 #define CPU_TS_Tmr_Delay_S(s)       CPU_TS_Tmr_Delay_MS(s*1000)
-#define Delay(ms)  CPU_TS_Tmr_Delay_MS(ms) 
+
 #endif
 
 #endif /* __CORE_DELAY_H */

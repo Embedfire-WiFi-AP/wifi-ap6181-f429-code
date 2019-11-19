@@ -20,10 +20,7 @@
 #include "./key/bsp_key.h"
 
 #include <cm_backtrace.h>
-#include "./delay/core_delay.h"   
-#include "OV5640_Init.h"
-#include "bsp_ov5640.h"
-#include "platform_init.h"
+
 /** @endcond */
 #define HARDWARE_VERSION               "V1.0.0"
 #define SOFTWARE_VERSION               "V0.1.0"
@@ -48,13 +45,13 @@ void BSP_Init();
 /**
  * 主函数
  */
-#include "camera_data_queue.h"
-
+#include "./camera/bsp_ov5640.h"
+#include "./camera/ov5640_AF.h"
+//extern OV5640_IDTypeDef OV5640_Camera_ID;
 int main( void )
 {
 		BSP_Init();
 	
-
     /*创建一个初始线程 */									
 		BaseType_t xReturn = pdPASS;
 		xReturn = xTaskCreate((TaskFunction_t )startup_thread,  /* 任务入口函数 */
@@ -128,10 +125,10 @@ static void tcpip_init_done( void * arg )
     xSemaphoreGive( *lwip_done_sema );
 }
 
-
+#include "platform_init.h"
 static void BSP_Init(void)
 {
-
+	
 	platform_init_mcu_infrastructure();
 	
 	/* LED 初始化 */
@@ -141,11 +138,6 @@ static void BSP_Init(void)
 	Debug_USART_Config();
 		  /* CmBacktrace initialize */
   cm_backtrace_init("F429", HARDWARE_VERSION, SOFTWARE_VERSION);
-	
-	CPU_TS_TmrInit();
 	 
 	  
 }
-	
-
-

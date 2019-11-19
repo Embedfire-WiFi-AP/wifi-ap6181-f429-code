@@ -36,7 +36,7 @@
 #include "queue.h"
 #include "tcpecho.h"
 #include "bsp_sdram.h"
-#include "ov5640_Init.h"
+#include "bsp_ov5640.h"
 				
 #include "camera_data_queue.h"
 #include "tcp_server.h"
@@ -65,8 +65,7 @@ void app_main( void )
 		cambuf = cbWrite(&cam_circular_buff);
 		err = open_camera((uint32_t *)cambuf->head, CAMERA_QUEUE_DATA_LEN);
 		SDRAM_Init();//初始化外部sdram
-	
-//		tcpecho_init();
+
 		host_rtos_create_thread( &wwd_thread, (void *)tcp_server_thread, "TCP_server", NULL,4096, 1);
 
 
@@ -76,6 +75,3 @@ void app_main( void )
     }
 
 }
-
-
-

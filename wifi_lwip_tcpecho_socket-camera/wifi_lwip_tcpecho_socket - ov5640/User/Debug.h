@@ -134,15 +134,15 @@
 */
 
 #if( !defined( check ) )
-//    #define check( X )                                                                                  \
-//        do                                                                                              \
-//        {                                                                                               \
-//            if( unlikely( !(X) ) )                                                                      \
-//            {                                                                                           \
-//                debug_print_assert( 0, #X, NULL, SHORT_FILE, __LINE__, __PRETTY_FUNCTION__ );             \
-//            }                                                                                           \
-//                                                                                                        \
-//        }   while( 1==0 )
+    #define check( X )                                                                                  \
+        do                                                                                              \
+        {                                                                                               \
+            if( unlikely( !(X) ) )                                                                      \
+            {                                                                                           \
+                debug_print_assert( 0, #X, NULL, SHORT_FILE, __LINE__, __PRETTY_FUNCTION__ );             \
+            }                                                                                           \
+                                                                                                        \
+        }   while( 1==0 )
 #endif
               
 //---------------------------------------------------------------------------------------------------------------------------

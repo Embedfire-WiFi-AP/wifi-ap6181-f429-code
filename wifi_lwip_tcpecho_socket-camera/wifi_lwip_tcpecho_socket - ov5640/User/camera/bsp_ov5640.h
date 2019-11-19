@@ -34,36 +34,18 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
+//#include "./systick/bsp_SysTick.h"
+//#include "./lcd/bsp_lcd.h"
 
-#include "./delay/core_delay.h"   
-
-#define FRAME_RATE_30FPS	0 //30帧
-#define FRAME_RATE_15FPS	1 //15帧
-
-
-#define Delay(ms)  CPU_TS_Tmr_Delay_MS(ms)
+#define Delay(ms)  Delay_ms(ms)
 
 
 /* Exported constants --------------------------------------------------------*/
 #define DCMI_DR_ADDRESS       0x50050028
 #define FSMC_LCD_ADDRESS      LCD_FRAME_BUFFER
 
-typedef enum
-{
-    JPEG_160x120          =   0x00,	    /* JPEG Image 160x120 Size */
-    JPEG_320x240          =   0x01,	    /* JPEG Image 320x240 Size */
-    JPEG_640x480          =   0x02,     /* JPEG Image 640X480 Size */
-    JPEG_800x600          =   0x03,     /* JPEG Image 800x600 Size */
-    JPEG_1024x768         =   0x04,    	/* JPEG Image 1024x768 Size */
-	JPEG_1280x960         =   0x05,    	/* JPEG Image 1280x720 Size */
-	JPEG_1600x1200        =   0x06,    	/* JPEG Image 1600x1200 Size */
-    JPEG_2048x1536        =   0x07,     /* JPEG Image 2048*1536 Size */
-    JPEG_2320x1740        =   0x08,     /* JPEG Image 2320*1740 Size */
-    JPEG_2592x1944        =   0x09,     /* JPEG Image 2592*1944 Size */
-}ImageFormat_TypeDef;
 
-//#define JPEG_FORMAT 		JPEG_800x600
-#define JPEG_FORMAT 		JPEG_800x600
+
 
 
 /*摄像头接口 */
@@ -106,9 +88,9 @@ typedef enum
 #define DCMI_PWDN_GPIO_CLK         	RCC_AHB1Periph_GPIOG
 #define DCMI_PWDN_GPIO_PIN         	GPIO_Pin_3
 //RST
-#define DCMI_RST_GPIO_PORT        	GPIOB
-#define DCMI_RST_GPIO_CLK         	RCC_AHB1Periph_GPIOB
-#define DCMI_RST_GPIO_PIN         	GPIO_Pin_5
+#define DCMI_RST_GPIO_PORT        	GPIOG
+#define DCMI_RST_GPIO_CLK         	RCC_AHB1Periph_GPIOG
+#define DCMI_RST_GPIO_PIN         	GPIO_Pin_2
 
 
 //数据信号线
@@ -317,8 +299,8 @@ void OV5640_QQVGAConfig(void);
 void OV5640_WVGAConfig(void);
 void OV5640_RGB565Config(void);
 
-void OV5640_BrightnessConfig(int8_t Brightness);
-//void OV5640_ContrastConfig(uint8_t value1, uint8_t value2);
+void OV5640_BrightnessConfig(uint8_t Brightness);
+void OV5640_ContrastConfig(uint8_t value1, uint8_t value2);
 void OV5640_BandWConfig(uint8_t BlackWhite);
 void OV5640_ColorEffectsConfig(uint8_t value1, uint8_t value2);
 uint8_t OV5640_WriteReg(uint16_t Addr, uint8_t Data);
@@ -332,8 +314,6 @@ void OV5640_DMA_Buffer3_Config(void);
 void OV5640_DMA_Config(uint32_t DMA_Memory0BaseAddr,uint16_t DMA_BufferSize);
 void OV5640_SpecialEffects(uint8_t mode);
 void OV5640_LightMode(uint8_t mode);
-void OV5640_USER_Config(void);
-
 
 typedef enum
 {
@@ -349,12 +329,7 @@ typedef enum
   HAL_DMA_STATE_TIMEOUT           = 0x03,  /*!< DMA timeout state                   */
   HAL_DMA_STATE_ERROR             = 0x04,  /*!< DMA error state                     */
 }HAL_DMA_StateTypeDef;
-/** @defgroup DCMI_Exported_Types DCMI Exported Types
-  * @{
-  */
-/** 
-  * @brief  HAL DCMI State structures definition
-  */ 
+
 typedef enum
 {
   HAL_DCMI_STATE_RESET             = 0x00,  /*!< DCMI not yet initialized or disabled  */
@@ -364,18 +339,31 @@ typedef enum
   HAL_DCMI_STATE_ERROR             = 0x04   /*!< DCMI error state                      */
 }HAL_DCMI_StateTypeDef;
 
-/** 
-  * @brief  HAL DMA Memory definition  
-  */ 
+typedef enum
+{
+    JPEG_160x120          =   0x00,	    /* JPEG Image 160x120 Size */
+    JPEG_320x240          =   0x01,	    /* JPEG Image 320x240 Size */
+    JPEG_640x480          =   0x02,     /* JPEG Image 640X480 Size */
+    JPEG_800x600          =   0x03,     /* JPEG Image 800x600 Size */
+    JPEG_1024x768         =   0x04,    	/* JPEG Image 1024x768 Size */
+	JPEG_1280x960         =   0x05,    	/* JPEG Image 1280x720 Size */
+	JPEG_1600x1200        =   0x06,    	/* JPEG Image 1600x1200 Size */
+    JPEG_2048x1536        =   0x07,     /* JPEG Image 2048*1536 Size */
+    JPEG_2320x1740        =   0x08,     /* JPEG Image 2320*1740 Size */
+    JPEG_2592x1944        =   0x09,     /* JPEG Image 2592*1944 Size */
+}ImageFormat_TypeDef;
 typedef enum
 {
   MEMORY0      = 0x00,    /*!< Memory 0     */
   MEMORY1      = 0x01,    /*!< Memory 1     */
 
 }HAL_DMA_MemoryTypeDef;
-void OV5640_Capture_Control(FunctionalState state);
-void DCMI_Stop(void);
-void DCMI_Start(void);
+
+//#define JPEG_FORMAT 		JPEG_800x600
+//#define JPEG_FORMAT 		JPEG_800x600
+#define JPEG_FORMAT 		JPEG_320x240
+
+
 #endif /* __DCMI_OV5640_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

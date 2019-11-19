@@ -336,9 +336,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,DEBUG ,USE_RTOS=1,WICED_DISABLE_BOOTLOADER, OV5640</Define>
+              <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,DEBUG ,USE_RTOS=1,WICED_DISABLE_BOOTLOADER, OV2640</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User;..\..\Libraries\CMSIS\Include;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\ver9.0.0\Source\include;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\ver9.0.0\Source;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\ver9.0.0\Source\portable\RVDS\ARM_CM7\r0p1;..\..\..\WiFi_SDk\WICED\network\LwIP\ver2.0.3\port;..\..\..\WiFi_SDk\WICED\network\LwIP\ver2.0.3\src;..\..\..\WiFi_SDk\WICED\network\LwIP\ver2.0.3\src\include;..\..\lwip\contrib\apps;..\..\..\WiFi_SDk\include;..\..\..\WiFi_SDk\libraries\utilities\linked_list;..\..\..\WiFi_SDk\libraries\utilities\TLV;..\..\..\WiFi_SDk\resources\firmware\43362;..\..\..\WiFi_SDk\WICED\internal\unit;..\..\..\WiFi_SDk\WICED\internal;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD\FreeRTOS;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD\FreeRTOS\arch;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx;..\..\..\WiFi_SDk\WICED\platform\include;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx\peripherals;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx\WWD;..\..\..\WiFi_SDk\WICED\WWD\include;..\..\..\WiFi_SDk\WICED\WWD\include\network;..\..\..\WiFi_SDk\WICED\WWD\include\platform;..\..\..\WiFi_SDk\WICED\WWD\include\RTOS;..\..\..\WiFi_SDk\WICED\WWD;..\..\..\WiFi_SDk\WICED\WWD\internal\bus_protocols;..\..\..\WiFi_SDk\WICED\WWD\internal\bus_protocols\SDIO;..\..\..\WiFi_SDk\WICED\WWD\internal\chips\43362;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\WWD;..\..\..\WiFi_SDk\WICED\WWD\internal;..\..\..\WiFi_SDk\WICED\platform\GCC;..\..\..\WiFi_SDk\WICED\security\BESL\crypto_internal;..\..\..\WiFi_SDk\WICED\security\BESL\mbedtls_open\include;..\..\..\WiFi_SDk\WICED\security\BESL\include;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\WICED;..\..\..\WiFi_SDk\WICED\platform\MCU;..\..\..\WiFi_SDk\libraries\utilities\ring_buffer;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\WWD\ARM_CM4F;..\..\..\WiFi_SDK\libraries\inputs\gpio_button;..\..\..\WiFi_SDk\WICED\network\LwIP\WICED;..\..\..\WiFi_SDk\WICED\security\BESL\host\WICED;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD\FreeRTOS\arch;..\..\..\WiFi_SDk\WICED\security\PostgreSQL\include;..\..\..\WiFi_SDK\WICED\RTOS\FreeRTOS\WWD\ARM_CM7;..\..\User\cm_backtrace\fault_handler\keil;..\..\User\cm_backtrace;..\..\..\WiFi_SDK\WICED\platform\MCU\STM32F4xx;..\..\User\ov5640;..\..\User\SDRAM</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User;..\..\Libraries\CMSIS\Include;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\ver9.0.0\Source\include;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\ver9.0.0\Source;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\ver9.0.0\Source\portable\RVDS\ARM_CM7\r0p1;..\..\..\WiFi_SDk\WICED\network\LwIP\ver2.0.3\port;..\..\..\WiFi_SDk\WICED\network\LwIP\ver2.0.3\src;..\..\..\WiFi_SDk\WICED\network\LwIP\ver2.0.3\src\include;..\..\lwip\contrib\apps;..\..\..\WiFi_SDk\include;..\..\..\WiFi_SDk\libraries\utilities\linked_list;..\..\..\WiFi_SDk\libraries\utilities\TLV;..\..\..\WiFi_SDk\resources\firmware\43362;..\..\..\WiFi_SDk\WICED\internal\unit;..\..\..\WiFi_SDk\WICED\internal;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD\FreeRTOS;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD\FreeRTOS\arch;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx;..\..\..\WiFi_SDk\WICED\platform\include;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx\peripherals;..\..\..\WiFi_SDk\WICED\platform\MCU\STM32F4xx\WWD;..\..\..\WiFi_SDk\WICED\WWD\include;..\..\..\WiFi_SDk\WICED\WWD\include\network;..\..\..\WiFi_SDk\WICED\WWD\include\platform;..\..\..\WiFi_SDk\WICED\WWD\include\RTOS;..\..\..\WiFi_SDk\WICED\WWD;..\..\..\WiFi_SDk\WICED\WWD\internal\bus_protocols;..\..\..\WiFi_SDk\WICED\WWD\internal\bus_protocols\SDIO;..\..\..\WiFi_SDk\WICED\WWD\internal\chips\43362;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\WWD;..\..\..\WiFi_SDk\WICED\WWD\internal;..\..\..\WiFi_SDk\WICED\platform\GCC;..\..\..\WiFi_SDk\WICED\security\BESL\crypto_internal;..\..\..\WiFi_SDk\WICED\security\BESL\mbedtls_open\include;..\..\..\WiFi_SDk\WICED\security\BESL\include;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\WICED;..\..\..\WiFi_SDk\WICED\platform\MCU;..\..\..\WiFi_SDk\libraries\utilities\ring_buffer;..\..\..\WiFi_SDk\WICED\RTOS\FreeRTOS\WWD\ARM_CM4F;..\..\..\WiFi_SDK\libraries\inputs\gpio_button;..\..\..\WiFi_SDk\WICED\network\LwIP\WICED;..\..\..\WiFi_SDk\WICED\security\BESL\host\WICED;..\..\..\WiFi_SDk\WICED\network\LwIP\WWD\FreeRTOS\arch;..\..\..\WiFi_SDk\WICED\security\PostgreSQL\include;..\..\..\WiFi_SDK\WICED\RTOS\FreeRTOS\WWD\ARM_CM7;..\..\User\cm_backtrace\fault_handler\keil;..\..\User\cm_backtrace;..\..\..\WiFi_SDK\WICED\platform\MCU\STM32F4xx;..\..\User\SDRAM;..\..\User\camera</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -447,6 +447,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\delay\core_delay.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_ov5640.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\camera\bsp_ov5640.c</FilePath>
+            </File>
+            <File>
+              <FileName>ov5640_AF.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\camera\ov5640_AF.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -461,26 +471,6 @@
               <FileName>tcp_server.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\tcp_server.c</FilePath>
-            </File>
-            <File>
-              <FileName>ov5460_SCCB.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\ov5640\ov5460_SCCB.c</FilePath>
-            </File>
-            <File>
-              <FileName>ov5640_AF.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\ov5640\ov5640_AF.c</FilePath>
-            </File>
-            <File>
-              <FileName>ov5640_Init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\ov5640\ov5640_Init.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_ov5640.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\ov5640\bsp_ov5640.c</FilePath>
             </File>
           </Files>
         </Group>

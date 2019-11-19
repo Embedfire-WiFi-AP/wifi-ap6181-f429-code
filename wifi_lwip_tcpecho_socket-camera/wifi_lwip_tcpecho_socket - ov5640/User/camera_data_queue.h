@@ -2,17 +2,18 @@
 #define __CAMERA_DATA_QUEUE_H_
 #include "stm32f4xx.h"
 
-#ifdef   OV5640
-#include "OV5640_init.h"
-#endif
-#ifdef   OV2640
-#include "OV2640_init.h"
-#endif
+//#include "OV5640_init.h"
 
 
-//缓冲队列的个数需要为2的幂
+/*
+由于网络的情况有可能不稳定
+*/
+
+//640*480
 #define CAMERA_QUEUE_NUM        (2)               //缓冲队列的大小
 #define CAMERA_QUEUE_DATA_LEN   (1024 * 1024*4)       //单帧图片的缓冲区大小
+
+
 
 typedef struct _camera_data
 {
