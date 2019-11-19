@@ -447,21 +447,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\delay\core_delay.c</FilePath>
             </File>
-            <File>
-              <FileName>bsp_ov5640.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\camera\bsp_ov5640.c</FilePath>
-            </File>
-            <File>
-              <FileName>ov5640_AF.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\camera\ov5640_AF.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Camera</GroupName>
           <Files>
+            <File>
+              <FileName>ov5640_AF.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\camera\ov5640_AF.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_ov5640.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\camera\bsp_ov5640.c</FilePath>
+            </File>
             <File>
               <FileName>camera_data_queue.c</FileName>
               <FileType>1</FileType>
