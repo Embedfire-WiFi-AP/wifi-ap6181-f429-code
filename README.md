@@ -20,14 +20,13 @@
 | 11   | [wifi_lwip_onenet_mqtt_dht11](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_onenet_mqtt_dht11) | 接入OneNET                                   |
 | 12   | [wifi_lwip_scan](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_scan) | 扫描周围wifi信息，并打印                     |
 | 13   | [wifi_lwip_tcpecho](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho) | netconn tcp                                  |
-| 14   | [wifi_lwip_tcpecho_socket-ov2640](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho_socket-ov2640) | wifi 网络摄像头（ov2640）                    |
-| 15   | [wifi_lwip_tcpecho_socket-ov5640](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho_socket-ov5640) | wifi 网络摄像头（ov5640）                    |
-| 16   | [wifi_lwip_tcpecho_socket](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho_socket) | socket tcp                                   |
-| 17   | [wifi_lwip_tcpecho_socket_AP](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho_socket_AP) | 开发板作为热点（服务器）                     |
-| 18   | [wifi_lwip_udpecho](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_udpecho) | netconn udp                                  |
-| 19   | [wifi_lwip_udpecho_socket](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_udpecho_socket) | socket udp                                   |
-| 20   | [wifi_lwip_webclient](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_webclient) | 获取野火官网网页并打印                       |
-| 21   | [网络调试助手-手机版（安卓）](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/网络调试助手-手机版（安卓）) | 网络调试助手（手机版）                       |
+| 14   | [wifi_lwip_tcpecho_socket-camera](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho_socket-camera) | wifi 网络摄像头（ov2640\ov5640）             |
+| 15   | [wifi_lwip_tcpecho_socket](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho_socket) | socket tcp                                   |
+| 16   | [wifi_lwip_tcpecho_socket_AP](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_tcpecho_socket_AP) | 开发板作为热点（服务器）                     |
+| 17   | [wifi_lwip_udpecho](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_udpecho) | netconn udp                                  |
+| 18   | [wifi_lwip_udpecho_socket](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_udpecho_socket) | socket udp                                   |
+| 19   | [wifi_lwip_webclient](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/wifi_lwip_webclient) | 获取野火官网网页并打印                       |
+| 20   | [网络调试助手-手机版（安卓）](https://github.com/Embdefire/wifi-ap6181-f429-code/tree/master/网络调试助手-手机版（安卓）) | 网络调试助手（手机版）                       |
 
 ### 使用野火开发板需要配置环境
 
